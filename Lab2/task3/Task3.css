@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f5f5f5;
+  color: #24292e;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3.7rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.2);
+  padding: 1rem;
+  width: 350px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.1rem;
+}
+
+.plan-subtitle {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #57606a;
+  margin-top: 0.1rem;
+}
+
+.card.free .plan-subtitle,
+.card.team .plan-subtitle {
+  margin-bottom: 2.7rem;
+}
+
+
+.starting-at {
+  display: inline-block;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #57606a;
+  margin: auto;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #c4cace;
+  border-radius: 20px;
+}
+
+.price-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.currency {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #57606a;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.unit {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.per {
+  font-size: 0.875rem;
+  color: #57606a;
+}
+
+.button-white {
+  background: white;
+  border: 1px solid #c4cace;
+  color: #24292e;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.button-white:hover {
+  background: #24292e;
+  color: white;
+}
+
+.button-black {
+  background: #000000;
+  border: 1px solid #000000;
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.button-black:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button-row .button-white,
+.button-row .button-black {
+  flex: 1;
+  text-align: center;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.card ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #363a3e;
+}
+
+.addons-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #57606a;
+  text-transform: uppercase;
+}
+
+.enterprise-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highlighted-card {
+  background: #0e72e6;
+  border-radius: 12px;
+  width: 104%;
+  height: 104%;
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.recommended-text {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.enterprise {
+  position: relative;
+  z-index: 1;
+}
+
+.addons-grid {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.addons-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.addons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.addon-card {
+  background: #f9f9f9;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.addon-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #24292e;
+}
+
+.addon-card p {
+  font-size: 0.95rem;
+  color: #57606a;
+  margin-bottom: 0.75rem;
+}
+
+.addon-card a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+}
+
+.addon-card a:hover {
+  text-decoration: underline;
+}
+
+.new-tag {
+  color: rgb(81, 241, 18);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: middle;
+  border: 1px solid rgb(81, 241, 18);
+}
