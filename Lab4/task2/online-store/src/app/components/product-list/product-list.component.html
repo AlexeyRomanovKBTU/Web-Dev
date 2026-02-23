@@ -1,0 +1,71 @@
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products">
+
+    <div class="gallery-container">
+      <button *ngIf="product.images.length > 1"
+              class="nav-arrow prev"
+              (click)="prevImage(product, $event)"
+              aria-label="Previous image">
+        ❮
+      </button>
+
+      <div class="main-image-wrapper">
+          <img [src]="product.images[getCurrentIndex(product.id)]"
+               alt="{{ product.name }}"
+               class="main-image">
+      </div>
+
+      <button *ngIf="product.images.length > 1"
+              class="nav-arrow next"
+              (click)="nextImage(product, $event)"
+              aria-label="Next image">
+        ❯
+      </button>
+    </div>
+
+    <div class="thumbnails">
+      <img *ngFor="let img of product.images; let i = index"
+           [src]="img"
+           (click)="setIndex(product.id, i)"
+           [class.active]="getCurrentIndex(product.id) === i"
+           alt="thumbnail">
+    </div>
+    <div class="product-info">
+      <h3>{{ product.name }}</h3>
+
+      <div class="product-rating">
+        <span class="star" [class.filled]="product.rating >= 1">★</span>
+        <span class="star" [class.filled]="product.rating >= 2">★</span>
+        <span class="star" [class.filled]="product.rating >= 3">★</span>
+        <span class="star" [class.filled]="product.rating >= 4">★</span>
+        <span class="star" [class.filled]="product.rating >= 4.5">★</span>
+        <span class="numeric">({{ product.rating.toFixed(1) }})</span>
+      </div>
+
+      <p class="price">{{ product.price | number:'1.0-0' }} ₸</p>
+      <p class="description">{{ product.description }}</p>
+    </div>
+
+    <div class="actions mt-auto"> <a [href]="product.link" target="_blank" class="btn-kaspi">Купить на Kaspi</a>
+
+      <div class="share-container">
+        <button class="btn-share" (click)="toggleShare(product.id)">
+          Поделиться
+        </button>
+
+        <div class="share-panel" *ngIf="activeShareId === product.id">
+          <a [href]="'https://wa.me/?text=' + safeEncode(product.name + ' - ' + product.link)" 
+            target="_blank" 
+            class="share-icon whatsapp">
+            <img src="assets/icons/whatsapp.png" alt="WhatsApp">
+          </a>
+          <a [href]="'https://t.me/share/url?url=' + safeEncode(product.link) + '&text=' + safeEncode(product.name)" 
+            target="_blank" 
+            class="share-icon telegram">
+            <img src="assets/icons/telegram.png" alt="Telegram">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
