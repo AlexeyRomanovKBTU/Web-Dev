@@ -1,0 +1,62 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<div class="product-card">
+  <div class="gallery-container">
+    @if (product().images.length > 1) {
+      <button class="nav-arrow prev" (click)="prevImage($event)" aria-label="Previous image">❮</button>
+    }
+    
+    <div class="main-image-wrapper">
+      <img [src]="product().images[currentImageIndex]" [alt]="product().name" class="main-image">
+    </div>
+
+    @if (product().images.length > 1) {
+      <button class="nav-arrow next" (click)="nextImage($event)" aria-label="Next image">❯</button>
+    }
+  </div>
+
+  <div class="thumbnails">
+    @for (img of product().images; track img; let i = $index) {
+      <img [src]="img" (click)="setIndex(i)" [class.active]="currentImageIndex === i" alt="thumbnail">
+    }
+  </div>
+
+  <div class="product-info">
+    <h3>{{ product().name }}</h3>
+    <div class="product-rating">
+      <span class="star" [class.filled]="product().rating >= 1">★</span>
+      <span class="star" [class.filled]="product().rating >= 2">★</span>
+      <span class="star" [class.filled]="product().rating >= 3">★</span>
+      <span class="star" [class.filled]="product().rating >= 4">★</span>
+      <span class="star" [class.filled]="product().rating >= 4.5">★</span>
+      <span class="numeric">({{ product().rating.toFixed(1) }})</span>
+    </div>
+    <p class="price">{{ product().price | number:'1.0-0' }} ₸</p>
+    <p class="description">{{ product().description }}</p>
+  </div>
+
+  <div class="likes-container">
+    <button class="btn-like" (click)="likeProduct()">❤️ {{ product().likes }}</button>
+  </div>
+
+  <div class="actions mt-auto">
+    <a [href]="product().link" target="_blank" class="btn-kaspi">Купить на Kaspi</a>
+    
+    <div class="action-buttons" style="display: flex; gap: 8px;">
+      <div class="share-container" style="flex: 1;">
+        <button class="btn-share" (click)="toggleShare()">Поделиться</button>
+        @if (activeShareId === product().id) {
+          <div class="share-panel">
+            <a [href]="'https://wa.me/?text=' + safeEncode(product().name + ' - ' + product().link)" target="_blank" class="share-icon whatsapp">
+              <img src="assets/icons/whatsapp.png" alt="WhatsApp">
+            </a>
+            <a [href]="'https://t.me/share/url?url=' + safeEncode(product().link) + '&text=' + safeEncode(product().name)" target="_blank" class="share-icon telegram">
+              <img src="assets/icons/telegram.png" alt="Telegram">
+            </a>
+          </div>
+        }
+      </div>
+      <button class="btn-delete" (click)="onDeleteClick()">Удалить</button>
+    </div>
+  </div>
+</div>

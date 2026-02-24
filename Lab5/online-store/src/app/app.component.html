@@ -1,0 +1,38 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<header style="background: #f14635; margin: -8px; padding: 20px; color: white; text-align: center; font-family: 'Poppins', sans-serif;">
+  <h1>Kaspi Store</h1>
+</header>
+
+<div class="app-container" style="display: flex; max-width: 1200px; margin: 0 auto; padding: 20px; gap: 20px; font-family: 'Poppins', sans-serif;">
+  
+  <aside style="width: 250px; flex-shrink: 0;">
+    <h2>Категории</h2>
+    <ul style="list-style: none; padding: 0;">
+      @for (category of categories; track category.id) {
+        <li 
+          style="padding: 12px; margin-bottom: 8px; background: #fff; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: 0.2s;"
+          [style.background]="selectedCategory?.id === category.id ? '#e3f2fd' : '#fff'"
+          [style.border-color]="selectedCategory?.id === category.id ? '#2196f3' : '#ddd'"
+          (click)="selectCategory(category)">
+          {{ category.name }}
+        </li>
+      }
+    </ul>
+  </aside>
+
+  <main style="flex: 1; font-family: 'Poppins', sans-serif;">
+    @if (selectedCategory) {
+      <h2 style="margin-top: 0;">{{ selectedCategory.name }}</h2>
+      <app-product-list 
+        [products]="currentProducts" 
+        (removeProductRequest)="handleDelete($event)">
+      </app-product-list>
+    } @else {
+      <div style="text-align: center; padding: 50px; background: #f8f9fa; border-radius: 12px;">
+        <h2>Добро пожаловать в интернет магазин Kaspi!</h2>
+        <p>Пожайлуста выберите одну из категорий в меню слева чтобы увидеть продукты.</p>
+      </div>
+    }
+  </main>
+</div>
